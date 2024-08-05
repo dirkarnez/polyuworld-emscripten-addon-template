@@ -1,9 +1,10 @@
 {
-  "name": "polyuworld-addon-template",
-  "version": "1.0.2",
-  "description": "Duckify your Hubs with this add-on",
+  "name": "polyuworld-emscripten-addon-template",
+  "version": "1.0.0",
+  "description": "Enabling C++ programming with this add-on",
   "scripts": {
-    "build": "webpack --mode=production",
+    "buildcxx": "cd src/cpp && cmake.exe -E rm -r -f cmake-build && cmake.exe -G\"MinGW Makefiles\" -DCMAKE_BUILD_TYPE=Debug -B./cmake-build && cd cmake-build && cmake --build . && cmake.exe -E rm -r -f CMakeFiles",
+    "build": "npm run buildcxx && webpack --mode=production",
     "prepare": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -31,6 +32,8 @@
     "@types/hubs": "github:Hubs-Foundation/hubs-ts-types#main",
     "@types/node": "^18.15.0",
     "@types/three": "^0.141.0",
+    "copy-webpack-plugin": "^12.0.2",
+    "cross-env": "^7.0.3",
     "ts-loader": "^9.5.1",
     "typescript": "^5.4.5",
     "webpack": "^5.91.0",

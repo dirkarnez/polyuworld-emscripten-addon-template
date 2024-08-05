@@ -25,6 +25,21 @@ import URL_QUACK from "../assets/quack.mp3";
 import URL_SPECIAL_QUACK from "../assets/specialquack.mp3";
 import { DuckPrefab } from "./duck-prefab";
 
+// @ts-ignore
+import * as PolyuworldEmscriptenAddonTemplate from "./cpp/cmake-build/emscripten/polyuworld-emscripten-addon-template";
+
+(async () => {
+  console.log("loading polyuworld-emscripten-addon-template...");
+
+  try {
+    const a = await PolyuworldEmscriptenAddonTemplate();
+    console.log(a.Factorial_10);
+  } catch (e) {
+    console.error(e);
+  }
+  console.log("polyuworld-emscripten-addon-template is loaded");
+})();
+
 const Quack = defineComponent({
   quacks: Types.f32,
 });
@@ -92,9 +107,9 @@ function onReady(app: App) {
 
 let sounds = new Map<string, number>();
 
-registerAddon("polyuworld-addon-template", {
-  name: "polyuworld addon template (Hubs Duck)",
-  description: `Spawns a duck when the "duck" chat command is invoked. It quacks.`,
+registerAddon("polyuworld-emscripten-addon-template", {
+  name: "polyuworld emscripten addon template",
+  description: `Enabling C++ programming with this add-on`,
   onReady: onReady,
   system: { system: quackSystem, order: SystemOrderE.PostPhysics },
   inflator: { jsx: { id: "quack", inflator: duckInflator } },

@@ -1,4 +1,5 @@
 import path from "path";
+import CopyWebpackPlugin from "copy-webpack-plugin";
 import { fileURLToPath } from "url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -23,6 +24,16 @@ export default {
       }
     ],
   },
+  plugins: [
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: "src/cpp/cmake-build/emscripten/polyuworld-emscripten-addon-template.wasm",
+          to: "polyuworld-emscripten-addon-template.wasm"
+        }
+      ]
+    }),
+  ],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
     alias: {
