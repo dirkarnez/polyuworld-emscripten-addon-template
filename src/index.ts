@@ -28,17 +28,7 @@ import { DuckPrefab } from "./duck-prefab";
 // @ts-ignore
 import * as PolyuworldEmscriptenAddonTemplate from "./cpp/cmake-build/emscripten/polyuworld-emscripten-addon-template";
 
-(async () => {
-  console.log("loading polyuworld-emscripten-addon-template...");
-
-  try {
-    const a = await PolyuworldEmscriptenAddonTemplate();
-    console.log(a.Factorial_10);
-  } catch (e) {
-    console.error(e);
-  }
-  console.log("polyuworld-emscripten-addon-template is loaded");
-})();
+let module: any;
 
 const Quack = defineComponent({
   quacks: Types.f32,
@@ -76,11 +66,16 @@ function playSound() {
   }
 }
 
+function callCXX() {
+  console.log(module.Factorial_10);
+}
+
 const heldQuackQuery = defineQuery([Quack, Held]);
 const heldQuackEnterQuery = enterQuery(heldQuackQuery);
 const quackSystem = (app: App): void => {
   heldQuackEnterQuery(app.world).forEach(() => {
     playSound();
+    callCXX();
   });
 };
 
@@ -92,6 +87,7 @@ function duckChatCommand(app: App) {
   obj.position.copy(avatarPov.localToWorld(new Vector3(0, 0, -1.5)));
   obj.lookAt(avatarPov.getWorldPosition(new Vector3()));
   playSound();
+  callCXX();
 }
 
 function onReady(app: App) {
@@ -102,6 +98,10 @@ function onReady(app: App) {
     sfxSystem.registerSound(url).then((sound: SoundDefT) => {
       sounds.set(sound.url, sound.id);
     });
+  });
+
+  PolyuworldEmscriptenAddonTemplate().then((instance: any) => {
+    module = instance;
   });
 }
 
