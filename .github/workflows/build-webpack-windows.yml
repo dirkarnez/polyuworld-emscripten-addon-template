@@ -19,11 +19,11 @@ jobs:
       shell: cmd
       run: |
         curl "https://github.com/dirkarnez/cpp-tools/raw/main/x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z" -L --output compiler &&^
-        7z.exe x compiler
+        7z.exe x compiler -o"x86_64-8.1.0-release-posix-seh-rt_v6-rev0"
 
     - name: download node-v16.16.0-win-x64.zip
       shell: cmd
-      run: curl https://nodejs.org/dist/v16.16.0/node-v16.16.0-win-x64.zip -L --output node-v16.16.0-win-x64.zip && 7z.exe x node-v16.16.0-win-x64.zip
+      run: curl https://github.com/dirkarnez/nodejs-tools/raw/main/node-v16.16.0-win-x64.zip -L --output node-v16.16.0-win-x64.zip && 7z.exe x node-v16.16.0-win-x64.zip
 
     - name: download cmake-3.26.1-windows-x86_64.zip
       shell: cmd
@@ -49,6 +49,7 @@ jobs:
         %CD%\cmake-3.26.1-windows-x86_64\bin;^
         %PYTHON_DIR%;^
         %PYTHON_DIR%\Scripts;
+        gcc --version &&^
         npm ci && npm run-script build
 
     - uses: JS-DevTools/npm-publish@v3
