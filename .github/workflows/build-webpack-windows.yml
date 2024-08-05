@@ -49,6 +49,7 @@ jobs:
         %CD%\cmake-3.26.1-windows-x86_64\bin;^
         %PYTHON_DIR%;^
         %PYTHON_DIR%\Scripts;
+        gcc --version &&^
         npm ci && npm run-script build
 
     - uses: JS-DevTools/npm-publish@v3
