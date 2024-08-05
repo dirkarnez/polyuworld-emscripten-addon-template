@@ -38,6 +38,7 @@ jobs:
       run:  curl https://github.com/dirkarnez/python-portable/releases/download/v3.10.8/python-3.10.8-amd64-portable.zip -L --output python.zip && 7z.exe x python.zip -o"python-3.10.8-amd64-portable"
       
     - name: Build
+      shell: cmd
       run: |
         set PYTHON_DIR=%CD%\python-3.10.8-amd64-portable
         SET PATH=^
