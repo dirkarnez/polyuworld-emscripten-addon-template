@@ -68,6 +68,6 @@ set_target_properties(
     RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/emscripten"
 )
 
-set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "--bind -flto -s ALLOW_MEMORY_GROWTH=1 -s MAXIMUM_MEMORY=4GB -s STACK_SIZE=5MB -s EXPORT_NAME=PolyuworldEmscriptenAddonTemplate -s MODULARIZE=1 -s ENVIRONMENT=web,worker")
+set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "--bind -flto -s ALLOW_MEMORY_GROWTH=1 -s MAXIMUM_MEMORY=4GB -s STACK_SIZE=5MB -s EXPORT_NAME=PolyuworldEmscriptenAddonTemplate -s EXPORT_ES6=1 -s MODULARIZE=1 -s ENVIRONMENT=web,worker")
 
 target_link_options(${PROJECT_NAME} PRIVATE "-static")

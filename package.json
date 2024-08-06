@@ -1,6 +1,6 @@
 {
   "name": "polyuworld-emscripten-addon-template",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Enabling C++ programming with this add-on",
   "scripts": {
     "buildcxx": "cd src/cpp && cmake.exe -E rm -r -f cmake-build && cmake.exe -G\"MinGW Makefiles\" -DCMAKE_BUILD_TYPE=Debug -B./cmake-build && cd cmake-build && cmake --build . && cmake.exe -E rm -r -f CMakeFiles",
