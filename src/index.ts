@@ -28,6 +28,8 @@ import { DuckPrefab } from "./duck-prefab";
 // @ts-ignore
 import PolyuworldEmscriptenAddonTemplate from "./cpp/cmake-build/emscripten/polyuworld-emscripten-addon-template.js";
 
+debugger;
+
 let module: any;
 
 const Quack = defineComponent({
