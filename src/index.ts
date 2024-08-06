@@ -26,7 +26,7 @@ import URL_SPECIAL_QUACK from "../assets/specialquack.mp3";
 import { DuckPrefab } from "./duck-prefab";
 
 // @ts-ignore
-import * as PolyuworldEmscriptenAddonTemplate from "./cpp/cmake-build/emscripten/polyuworld-emscripten-addon-template.js";
+import PolyuworldEmscriptenAddonTemplate from "./cpp/cmake-build/emscripten/polyuworld-emscripten-addon-template.js";
 
 let module: any;
 
