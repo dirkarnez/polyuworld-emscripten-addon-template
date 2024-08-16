@@ -10,3 +10,8 @@ new CopyWebpackPlugin({
     ]
 }),
 ```
+```js
+  new webpack.ProvidePlugin({
+    process: "process/browser",
+  })
+```
